@@ -1,0 +1,62 @@
+---
+
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-[#fafafa]/80 backdrop-blur-md border-b border-neutral-200">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2">
+        <span class="font-mono font-bold text-xl text-neutral-900">O9D</span>
+      </a>
+      
+      <!-- Desktop navigation -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="https://github.com/o9d-ai" class="text-sm text-neutral-600 hover:text-neutral-900 transition-colors">GitHub</a>
+      </div>
+      
+      <!-- CTAs -->
+      <div class="hidden md:flex items-center gap-4">
+        <a 
+          href="#waitlist" 
+          class="px-4 py-2 bg-neutral-900 text-white text-sm font-medium rounded-lg hover:bg-neutral-800 transition-colors"
+        >
+          Join Waitlist
+        </a>
+      </div>
+      
+      <!-- Mobile menu button -->
+      <button 
+        id="mobile-menu-btn"
+        class="md:hidden p-2 text-neutral-600 hover:text-neutral-900"
+        aria-label="Toggle menu"
+      >
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-neutral-200 bg-[#fafafa]">
+    <div class="px-6 py-4 space-y-3">
+      <a href="https://github.com/o9d-ai" class="block text-sm text-neutral-600 hover:text-neutral-900">GitHub</a>
+      <hr class="border-neutral-200" />
+      <a 
+        href="#waitlist" 
+        class="block w-full text-center px-4 py-2 bg-neutral-900 text-white text-sm font-medium rounded-lg hover:bg-neutral-800"
+      >
+        Join Waitlist
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

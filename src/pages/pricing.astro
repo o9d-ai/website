@@ -1,0 +1,191 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const tiers = [
+  {
+    name: 'Free',
+    price: '$0',
+    period: '/month',
+    description: 'Perfect for getting started',
+    features: [
+      'Up to 3 agents',
+      '5 connected data sources',
+      'Community support',
+      'Basic analytics',
+    ],
+    cta: 'Get Started',
+    ctaHref: '/signup',
+    highlighted: false,
+  },
+  {
+    name: 'Pro',
+    price: '$49',
+    period: '/month',
+    description: 'For growing teams',
+    badge: 'MOST POPULAR',
+    features: [
+      'Unlimited agents',
+      'Unlimited data sources',
+      'Priority support',
+      'Advanced analytics',
+      'Team collaboration (up to 5)',
+      'Custom system prompt fragments',
+    ],
+    cta: 'Start Free Trial',
+    ctaHref: '/signup?plan=pro',
+    highlighted: true,
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    period: '',
+    description: 'For large organizations',
+    features: [
+      'Everything in Pro',
+      'Unlimited team members',
+      'SSO & SAML',
+      'Dedicated support',
+      'Custom integrations',
+      'SLA guarantee',
+    ],
+    cta: 'Contact Sales',
+    ctaHref: '/contact',
+    highlighted: false,
+  },
+];
+
+const faqs = [
+  {
+    question: 'How does the 14-day free trial work?',
+    answer: 'Start your Pro trial instantly with no credit card required. You get full access to all Pro features for 14 days. If you decide not to continue, your account automatically converts to the Free plan.',
+  },
+  {
+    question: 'Can I change plans at any time?',
+    answer: 'Yes, you can upgrade or downgrade your plan at any time. When upgrading, you\'ll be charged the prorated difference. When downgrading, the new rate takes effect at your next billing cycle.',
+  },
+  {
+    question: 'What payment methods do you accept?',
+    answer: 'We accept all major credit cards (Visa, Mastercard, American Express) and can arrange invoicing for Enterprise customers with annual commitments.',
+  },
+  {
+    question: 'What counts as a "connected data source"?',
+    answer: 'A data source is any external MCP server, GraphQL endpoint, or REST API you connect to O9D. Each unique connection counts as one data source, regardless of how many tools you create from it.',
+  },
+  {
+    question: 'Do you offer discounts for startups or non-profits?',
+    answer: 'Yes! We offer 50% off Pro plans for verified startups (under 2 years old, under $1M ARR) and registered non-profit organizations. Contact us to apply.',
+  },
+];
+---
+
+<Layout 
+  title="Pricing - O9D" 
+  description="Simple, transparent pricing for O9D. Start free and scale as you grow."
+>
+  <Nav />
+  <main class="pt-24 pb-16 bg-[#fafafa]">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-4">
+          Simple, transparent pricing
+        </h1>
+        <p class="text-xl text-neutral-500">
+          Start free. Scale as you grow.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {tiers.map((tier) => (
+          <div
+            class:list={[
+              'relative rounded-xl border p-8 flex flex-col',
+              tier.highlighted
+                ? 'bg-white border-neutral-900 shadow-xl'
+                : 'bg-white border-neutral-200',
+            ]}
+          >
+            {tier.badge && (
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+                <span class="bg-neutral-900 text-white text-xs font-bold px-3 py-1 rounded-full">
+                  {tier.badge}
+                </span>
+              </div>
+            )}
+
+            <div class="mb-6">
+              <h3 class="text-lg font-semibold text-neutral-900 mb-2">{tier.name}</h3>
+              <div class="flex items-baseline gap-1">
+                <span class="font-mono text-4xl font-bold text-neutral-900">{tier.price}</span>
+                <span class="text-neutral-400">{tier.period}</span>
+              </div>
+              <p class="mt-2 text-sm text-neutral-500">{tier.description}</p>
+            </div>
+
+            <ul class="space-y-3 mb-8 flex-grow">
+              {tier.features.map((feature) => (
+                <li class="flex items-start gap-3">
+                  <svg
+                    class="w-5 h-5 text-neutral-900 flex-shrink-0 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span class="text-sm text-neutral-600">{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={tier.ctaHref}
+              class:list={[
+                'block w-full py-3 px-4 text-center text-sm font-medium rounded-lg transition-colors',
+                tier.highlighted
+                  ? 'bg-neutral-900 text-white hover:bg-neutral-800'
+                  : 'border border-neutral-300 text-neutral-900 hover:bg-neutral-100',
+              ]}
+            >
+              {tier.cta}
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+      <h2 class="text-2xl font-bold text-neutral-900 text-center mb-12">
+        Frequently asked questions
+      </h2>
+
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group border border-neutral-200 rounded-lg bg-white">
+            <summary class="flex items-center justify-between cursor-pointer p-6 text-neutral-900 font-medium hover:bg-neutral-50 transition-colors rounded-lg">
+              {faq.question}
+              <svg
+                class="w-5 h-5 text-neutral-400 group-open:rotate-180 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-sm text-neutral-600 leading-relaxed">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

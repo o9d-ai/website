@@ -1,0 +1,58 @@
+---
+const features = [
+  {
+    title: "Wrapped Tools",
+    description: "Turn generic tools into high-leverage, domain-specific ones. Wrap 'notion-search' into 'architecture-docs-search' with team and folder pre-filled—fewer parameters, better results.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="6" rx="1"/><rect x="3" y="11" width="18" height="6" rx="1" opacity="0.7"/><rect x="3" y="19" width="18" height="2" rx="1" opacity="0.4"/></svg>`,
+  },
+  {
+    title: "GraphQL & REST as Tools",
+    description: "Connect any API endpoint as a Resource. Create Tools from GraphQL queries or REST calls with auto-generated input schemas and OAuth support.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><line x1="6" y1="9" x2="6" y2="15"/><line x1="18" y1="9" x2="18" y2="15"/><line x1="9" y1="6" x2="15" y2="6"/><line x1="9" y1="18" x2="15" y2="18"/></svg>`,
+  },
+  {
+    title: "Curated Agents",
+    description: "Assemble focused tool sets for specific missions. An 'Architecture Agent' gets only the tools it needs—no bloat, no confusion, better outcomes.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="9" cy="10" r="1.5" fill="currentColor"/><circle cx="15" cy="10" r="1.5" fill="currentColor"/><path d="M9 15h6" stroke-linecap="round"/><line x1="12" y1="2" x2="12" y2="4"/><circle cx="12" cy="1" r="1" fill="currentColor"/></svg>`,
+  },
+  {
+    title: "MCP Server Aggregation",
+    description: "Connect third-party MCP servers and extend their tools. Combine tools from multiple servers into a single curated agent.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6"/><path d="M12 16v6"/><circle cx="12" cy="12" r="4"/><path d="M4.93 4.93l4.24 4.24"/><path d="M14.83 14.83l4.24 4.24"/><path d="M19.07 4.93l-4.24 4.24"/><path d="M9.17 14.83l-4.24 4.24"/></svg>`,
+  },
+  {
+    title: "System Prompt Fragments",
+    description: "Build modular system prompts from trackable fragments. Measure the impact of each instruction and A/B test different approaches.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>`,
+  },
+  {
+    title: "Full Conversation History",
+    description: "Every transcript and turn is stored. Review past conversations, debug agent behavior, and build datasets for evaluation.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="13" y2="13"/></svg>`,
+  },
+];
+---
+
+<section class="py-24 px-6 bg-[#fafafa]">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-16">
+      Built for developers who demand more from their AI
+    </h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {features.map((feature) => (
+        <div class="group p-6 rounded-xl border border-neutral-200 bg-white hover:border-neutral-300 hover:shadow-lg hover:shadow-neutral-200/50 transition-all duration-300">
+          <div class="w-12 h-12 rounded-lg bg-neutral-100 flex items-center justify-center mb-4 text-neutral-600 group-hover:bg-neutral-900 group-hover:text-white transition-all duration-300">
+            <Fragment set:html={feature.icon} />
+          </div>
+          <h3 class="text-lg font-semibold text-neutral-900 mb-2">
+            {feature.title}
+          </h3>
+          <p class="text-neutral-500 text-sm leading-relaxed">
+            {feature.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
